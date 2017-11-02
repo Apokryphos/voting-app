@@ -1,0 +1,35 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development node ./src/server",
+    "test": "eslint ./src && tape ./test | faucet"
+  },
+  "author": "Tony Slavotinek",
+  "repository": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "faucet": "0.0.1",
+    "supertest": "^3.0.0",
+    "tape": "^4.8.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chalk": "^2.3.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.6"
+  },
+  "description": "Voting poll application."
+}
