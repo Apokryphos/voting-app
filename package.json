@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build-client": "webpack --config webpack.production.config.js",
     "start": "NODE_ENV=development node ./src/js/server",
-    "test": "eslint ./src && tape ./test | faucet"
+    "start-client": "webpack-dev-server --hot --config webpack.development.config.js",
+    "test": "eslint ./src && tape ./test | faucet",
+    "test-client": "eslint --ext .js --ext .jsx ./src/js && flow && jest --coverage ./test/client"
   },
   "author": "Tony Slavotinek",
   "repository": "",
