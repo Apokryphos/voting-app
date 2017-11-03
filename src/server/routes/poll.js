@@ -18,7 +18,11 @@ module.exports = (function Router() {
 
   const router = Express.Router();
 
-  router.route('/poll/:poll_id').get(PollController.getPoll);
+  router.use('/poll/:poll_id', checkDatabase);
+  router
+    .route('/poll/:poll_id')
+    .get(PollController.getPoll)
+    .delete(PollController.deletePoll);
 
   router.use('/poll', checkDatabase);
   router.route('/poll').post(PollController.postPoll);

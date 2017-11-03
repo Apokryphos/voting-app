@@ -23,6 +23,33 @@ test('GET /api/polls when Database is offline', t =>
       t.end();
     }));
 
+test('DELETE /api/poll when Database is offline', t =>
+  request
+    .delete('/api/poll')
+    .set('Accept', 'application/json')
+    .expect(503)
+    .then(() => {
+      t.end();
+    }));
+
+test('DELETE /api/poll with non-existant ID when Database is offline', t =>
+  request
+    .delete('/api/poll/59fa8d7305b9e712dea4e648')
+    .set('Accept', 'application/json')
+    .expect(503)
+    .then(() => {
+      t.end();
+    }));
+
+test('DELETE /api/poll with non-object ID when Database is offline', t =>
+  request
+    .delete('/api/poll/100')
+    .set('Accept', 'application/json')
+    .expect(503)
+    .then(() => {
+      t.end();
+    }));
+
 test('POST /api/poll when Database is offline', (t) => {
   const pollData = PollData.valid();
 

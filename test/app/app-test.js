@@ -60,6 +60,47 @@ DbUtil.testFixture('GET /api/polls', (t) => {
   return PollData.create(t, pollData, testRequest);
 });
 
+DbUtil.testFixture('DELETE /api/poll', (t) => {
+  const pollData = PollData.valid();
+
+  return PollData.create(t, pollData, (poll) => {
+    PollData.test(t, poll, pollData);
+
+    //  Delete poll
+    return request
+      .delete(`/api/poll/${poll._id}`)
+      .set('Accept', 'application/json')
+      .expect(204)
+      .then(() =>
+        //  Confirm poll no longer exists
+        request
+          .get(`/api/poll/${poll._id}`)
+          .expect(404)
+          .then((res) => {
+            t.equal(res.body, null);
+            t.end();
+          }));
+  });
+});
+
+DbUtil.testFixture('DELETE /api/poll with non-existant ID', t =>
+  request
+    .delete('/api/poll/59fa8d7305b9e712dea4e648')
+    .set('Accept', 'application/json')
+    .expect(404)
+    .then(() => {
+      t.end();
+    }));
+
+DbUtil.testFixture('DELETE /api/poll with non-object ID', t =>
+  request
+    .delete('/api/poll/100')
+    .set('Accept', 'application/json')
+    .expect(400)
+    .then(() => {
+      t.end();
+    }));
+
 DbUtil.testFixture('GET /api/poll', (t) => {
   const pollData = PollData.valid();
 
