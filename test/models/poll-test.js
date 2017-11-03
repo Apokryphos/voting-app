@@ -1,5 +1,5 @@
 const DbUtil = require('../db-util.js');
-const Poll = require('../../src/models/poll.js');
+const Poll = require('../../src/js/models/poll.js');
 const PollData = require('../data/poll-data.js');
 
 DbUtil.testFixture('Can create Poll', (t) => {

@@ -1,5 +1,5 @@
 const dbUtil = require('../db-util.js');
-const User = require('../../src/models/user.js');
+const User = require('../../src/js/models/user.js');
 
 dbUtil.testFixture('Can create User', (t) => {
   const userData = {

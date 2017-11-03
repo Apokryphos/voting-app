@@ -1,4 +1,4 @@
-const App = require('../../src/server/app');
+const App = require('../../src/js/server/app');
 const DbUtil = require('../db-util.js');
 const PollData = require('../data/poll-data.js');
 const test = require('tape');

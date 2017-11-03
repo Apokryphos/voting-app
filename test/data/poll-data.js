@@ -1,4 +1,4 @@
-const Poll = require('../../src/models/poll.js');
+const Poll = require('../../src/js/models/poll.js');
 
 //  Helper function to wrap creating a Poll in database
 function createPoll(t, pollData, fn) {

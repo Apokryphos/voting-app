@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node ./src/server",
+    "start": "NODE_ENV=development node ./src/js/server",
     "test": "eslint ./src && tape ./test | faucet"
   },
   "author": "Tony Slavotinek",

@@ -1,6 +1,6 @@
 const Mongoose = require('mongoose');
 const test = require('tape');
-const Db = require('../src/server/db');
+const Db = require('../src/js/server/db');
 
 function verbose(t, message) {
   if (process.env.VERBOSE_TESTS) {
