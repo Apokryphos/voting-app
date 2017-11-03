@@ -83,7 +83,7 @@ DbUtil.testFixture('DELETE /api/poll', (t) => {
   });
 });
 
-DbUtil.testFixture('DELETE /api/poll with non-existant ID', t =>
+DbUtil.testFixture('DELETE /api/poll with non-existant ObjectID', t =>
   request
     .delete('/api/poll/59fa8d7305b9e712dea4e648')
     .set('Accept', 'application/json')
@@ -92,7 +92,7 @@ DbUtil.testFixture('DELETE /api/poll with non-existant ID', t =>
       t.end();
     }));
 
-DbUtil.testFixture('DELETE /api/poll with non-object ID', t =>
+DbUtil.testFixture('DELETE /api/poll with invalid ObjectID', t =>
   request
     .delete('/api/poll/100')
     .set('Accept', 'application/json')
@@ -118,6 +118,24 @@ DbUtil.testFixture('GET /api/poll', (t) => {
       });
   });
 });
+
+DbUtil.testFixture('GET /api/poll with non-existant ObjectID', t =>
+  request
+    .get('/api/poll/59fa8d7305b9e712dea4e648')
+    .set('Accept', 'application/json')
+    .expect(404)
+    .then(() => {
+      t.end();
+    }));
+
+DbUtil.testFixture('GET /api/poll with invalid ObjectID', t =>
+  request
+    .get('/api/poll/100')
+    .set('Accept', 'application/json')
+    .expect(400)
+    .then(() => {
+      t.end();
+    }));
 
 DbUtil.testFixture('POST /api/poll', (t) => {
   const pollData = PollData.valid();

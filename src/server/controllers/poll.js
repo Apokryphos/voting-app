@@ -26,6 +26,11 @@ function deletePoll(req, res) {
 function getPoll(req, res) {
   Poll.findById(req.params.poll_id, (err, poll) => {
     if (err) {
+      if (err.name === 'CastError') {
+        //  Client passed an ID that wasn't an ObjectId
+        res.status(400).json(err);
+        return;
+      }
       res.status(500).json(err);
       return;
     }
