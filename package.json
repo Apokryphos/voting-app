@@ -4,9 +4,12 @@
   "main": "index.js",
   "scripts": {
     "build-client": "webpack --config webpack.production.config.js",
+    "precommit": "npm test",
+    "prepush": "npm test",
     "start": "NODE_ENV=development node ./src/js/server",
     "start-client": "webpack-dev-server --hot --config webpack.development.config.js",
-    "test": "eslint ./src && tape ./test | faucet",
+    "test": "npm run test-server && npm run test-client",
+    "test-server": "eslint ./src && flow && tape ./test | faucet",
     "test-client": "eslint --ext .js --ext .jsx ./src/js && flow && jest --coverage ./test/client"
   },
   "author": "Tony Slavotinek",
@@ -34,6 +37,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "faucet": "0.0.1",
     "flow-bin": "^0.58.0",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
     "react-test-renderer": "^16.0.0",
     "supertest": "^3.0.0",
