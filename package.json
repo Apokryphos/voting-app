@@ -10,6 +10,10 @@
   "repository": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "clean-webpack-plugin": "^0.1.17",
+    "compression-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^4.2.0",
     "dotenv": "^4.0.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -18,7 +22,10 @@
     "eslint-plugin-react": "^7.4.0",
     "faucet": "0.0.1",
     "supertest": "^3.0.0",
-    "tape": "^4.8.0"
+    "tape": "^4.8.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4",
+    "webpack-merge": "^4.1.1"
   },
   "directories": {
     "test": "test"
@@ -26,11 +33,19 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "chalk": "^2.3.0",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "mongodb": "^2.2.33",
     "mongoose": "^4.12.6",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "node-sass": "^4.5.3",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0"
   },
   "description": "Voting poll application."
 }
