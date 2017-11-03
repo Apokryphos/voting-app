@@ -5,7 +5,9 @@ module.exports = (function Print() {
   function printError(message, err) {
     console.error(Chalk.red(`\u2717 ${message}`));
     //  Don't print stack trace
-    console.error(Chalk.red(`\u2717 ${err}`));
+    if (err) {
+      console.error(Chalk.red(`\u2717 ${err}`));
+    }
   }
 
   function printStatus(message) {
