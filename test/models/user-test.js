@@ -1,7 +1,7 @@
 const dbUtil = require('../db-util.js');
 const User = require('../../src/models/user.js');
 
-dbUtil.testFixture('Can create User.', (t) => {
+dbUtil.testFixture('Can create User', (t) => {
   const userData = {
     name: 'Test User',
   };
@@ -13,7 +13,7 @@ dbUtil.testFixture('Can create User.', (t) => {
   });
 });
 
-dbUtil.testFixture('Cannot create User without name.', (t) => {
+dbUtil.testFixture('Cannot create User without name', (t) => {
   const userData = {};
   User.create(userData, (err) => {
     t.equal(err.name, 'ValidationError');

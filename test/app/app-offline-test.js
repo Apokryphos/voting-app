@@ -14,7 +14,7 @@ test.onFinish(() => {
   server.close();
 });
 
-test('GET /api/polls when Database is offline', t =>
+test('GET /api/polls fails when database is offline', t =>
   request
     .get('/api/polls')
     .set('Accept', 'application/json')
@@ -23,7 +23,7 @@ test('GET /api/polls when Database is offline', t =>
       t.end();
     }));
 
-test('DELETE /api/poll when Database is offline', t =>
+test('DELETE /api/poll fails when database is offline', t =>
   request
     .delete('/api/poll')
     .set('Accept', 'application/json')
@@ -32,7 +32,7 @@ test('DELETE /api/poll when Database is offline', t =>
       t.end();
     }));
 
-test('DELETE /api/poll with non-existant ID when Database is offline', t =>
+test('DELETE /api/poll with non-existant ID fails when database is offline', t =>
   request
     .delete('/api/poll/59fa8d7305b9e712dea4e648')
     .set('Accept', 'application/json')
@@ -41,7 +41,7 @@ test('DELETE /api/poll with non-existant ID when Database is offline', t =>
       t.end();
     }));
 
-test('DELETE /api/poll with non-object ID when Database is offline', t =>
+test('DELETE /api/poll with non-object ID fails when database is offline', t =>
   request
     .delete('/api/poll/100')
     .set('Accept', 'application/json')
@@ -50,7 +50,7 @@ test('DELETE /api/poll with non-object ID when Database is offline', t =>
       t.end();
     }));
 
-test('POST /api/poll when Database is offline', (t) => {
+test('POST /api/poll fails when database is offline', (t) => {
   const pollData = PollData.valid();
 
   request
@@ -64,7 +64,7 @@ test('POST /api/poll when Database is offline', (t) => {
     });
 });
 
-test('POST /api/poll missing name param when Database is offline', (t) => {
+test('POST /api/poll with missing name param fails when database is offline', (t) => {
   request
     .post('/api/poll')
     .send({ question: 'Test', choices: ['a', 'b', 'c'] })
@@ -76,7 +76,7 @@ test('POST /api/poll missing name param when Database is offline', (t) => {
     });
 });
 
-test('POST /api/poll missing question param when Database is offline', (t) => {
+test('POST /api/poll with missing question param fails when database is offline', (t) => {
   request
     .post('/api/poll')
     .send({ name: 'Test', choices: ['a', 'b', 'c'] })
@@ -89,7 +89,7 @@ test('POST /api/poll missing question param when Database is offline', (t) => {
     });
 });
 
-test('POST /api/poll missing choices param when Database is offline', (t) => {
+test('POST /api/poll with missing choices param fails when database is offline', (t) => {
   request
     .post('/api/poll')
     .send({ name: 'Test', question: 'Test' })

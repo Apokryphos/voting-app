@@ -14,31 +14,18 @@ test.onFinish(() => {
   server.close();
 });
 
-DbUtil.testFixture('GET /api/polls', t =>
-  request
-    .get('/api/polls')
-    .set('Accept', 'application/json')
-    .expect(200)
-    .then((response) => {
-      t.deepEqual(response.body, []);
-      t.end();
-    }));
-
-DbUtil.testFixture('GET /api/polls - empty collection', t =>
+DbUtil.testFixture('GET /api/polls returns empty array when there are no documents', t =>
   request
     .get('/api/polls')
     .set('Accept', 'application/json')
     .expect(200)
     .then((response) => {
       t.equal(response.body.length, 0);
-      t.end();
-    })
-    .catch((e) => {
-      t.fail(e);
+      t.deepEqual(response.body, []);
       t.end();
     }));
 
-DbUtil.testFixture('GET /api/polls', (t) => {
+DbUtil.testFixture('GET /api/polls returns array of polls when there are documents', (t) => {
   const pollData = PollData.valid();
 
   const testRequest = () =>
@@ -83,7 +70,7 @@ DbUtil.testFixture('DELETE /api/poll', (t) => {
   });
 });
 
-DbUtil.testFixture('DELETE /api/poll with non-existant ObjectID', t =>
+DbUtil.testFixture('DELETE /api/poll with non-existant ObjectID fails', t =>
   request
     .delete('/api/poll/59fa8d7305b9e712dea4e648')
     .set('Accept', 'application/json')
@@ -92,7 +79,7 @@ DbUtil.testFixture('DELETE /api/poll with non-existant ObjectID', t =>
       t.end();
     }));
 
-DbUtil.testFixture('DELETE /api/poll with invalid ObjectID', t =>
+DbUtil.testFixture('DELETE /api/poll with invalid ObjectID fails', t =>
   request
     .delete('/api/poll/100')
     .set('Accept', 'application/json')
@@ -119,7 +106,7 @@ DbUtil.testFixture('GET /api/poll', (t) => {
   });
 });
 
-DbUtil.testFixture('GET /api/poll with non-existant ObjectID', t =>
+DbUtil.testFixture('GET /api/poll with non-existant ObjectID fails', t =>
   request
     .get('/api/poll/59fa8d7305b9e712dea4e648')
     .set('Accept', 'application/json')
@@ -128,7 +115,7 @@ DbUtil.testFixture('GET /api/poll with non-existant ObjectID', t =>
       t.end();
     }));
 
-DbUtil.testFixture('GET /api/poll with invalid ObjectID', t =>
+DbUtil.testFixture('GET /api/poll with invalid ObjectID fails', t =>
   request
     .get('/api/poll/100')
     .set('Accept', 'application/json')
@@ -153,7 +140,7 @@ DbUtil.testFixture('POST /api/poll', (t) => {
     });
 });
 
-DbUtil.testFixture('POST /api/poll - missing name param', t =>
+DbUtil.testFixture('POST /api/poll with missing name param fails', t =>
   request
     .post('/api/poll')
     .send({ question: 'Test', choices: ['a', 'b', 'c'] })
@@ -167,7 +154,7 @@ DbUtil.testFixture('POST /api/poll - missing name param', t =>
       t.end();
     }));
 
-DbUtil.testFixture('POST /api/poll - missing question param', t =>
+DbUtil.testFixture('POST /api/poll with missing question param fails', t =>
   request
     .post('/api/poll')
     .send({ name: 'Test', choices: ['a', 'b', 'c'] })
@@ -179,7 +166,7 @@ DbUtil.testFixture('POST /api/poll - missing question param', t =>
       t.end();
     }));
 
-DbUtil.testFixture('POST /api/poll - missing choices param', t =>
+DbUtil.testFixture('POST /api/poll with missing choices param fails', t =>
   request
     .post('/api/poll')
     .send({ name: 'Test', question: 'Test' })
@@ -191,7 +178,7 @@ DbUtil.testFixture('POST /api/poll - missing choices param', t =>
       t.end();
     }));
 
-DbUtil.testFixture('POST /api/poll - empty choices param', t =>
+DbUtil.testFixture('POST /api/poll with empty choices param fails', t =>
   request
     .post('/api/poll')
     .send({ name: 'Test', question: 'Test', choices: [] })

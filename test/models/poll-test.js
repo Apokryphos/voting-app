@@ -2,7 +2,7 @@ const DbUtil = require('../db-util.js');
 const Poll = require('../../src/models/poll.js');
 const PollData = require('../data/poll-data.js');
 
-DbUtil.testFixture('Can create Poll.', (t) => {
+DbUtil.testFixture('Can create Poll', (t) => {
   const pollData = PollData.valid();
 
   return Poll.create(pollData, (err, poll) => {
@@ -12,7 +12,7 @@ DbUtil.testFixture('Can create Poll.', (t) => {
   });
 });
 
-DbUtil.testFixture('Cannot create Poll without properties.', (t) => {
+DbUtil.testFixture('Cannot create Poll without properties', (t) => {
   const pollData = {};
 
   return Poll.create(pollData, (err) => {
@@ -24,7 +24,7 @@ DbUtil.testFixture('Cannot create Poll without properties.', (t) => {
   });
 });
 
-DbUtil.testFixture('Cannot create Poll without name.', (t) => {
+DbUtil.testFixture('Cannot create Poll without name', (t) => {
   const pollData = {
     question: 'test question',
     choices: ['a', 'b', 'c'],
@@ -39,7 +39,7 @@ DbUtil.testFixture('Cannot create Poll without name.', (t) => {
   });
 });
 
-DbUtil.testFixture('Cannot create Poll without question.', (t) => {
+DbUtil.testFixture('Cannot create Poll without question', (t) => {
   const pollData = {
     name: 'test name',
     choices: ['a', 'b', 'c'],
@@ -54,7 +54,7 @@ DbUtil.testFixture('Cannot create Poll without question.', (t) => {
   });
 });
 
-DbUtil.testFixture('Cannot create Poll without choices.', (t) => {
+DbUtil.testFixture('Cannot create Poll without choices', (t) => {
   const pollData = {
     name: 'test name',
     question: 'test question',
