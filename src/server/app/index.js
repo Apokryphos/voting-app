@@ -1,6 +1,7 @@
 const Express = require('express');
 const BodyParser = require('body-parser');
-const Router = require('../routes');
+const PollRouter = require('../routes/poll');
+const LogRouter = require('../routes/log');
 
 module.exports = (function App() {
   const app = Express();
@@ -11,7 +12,8 @@ module.exports = (function App() {
     extended: true,
   }));
 
-  app.use('/api', Router);
+  app.use(LogRouter);
+  app.use('/api', PollRouter);
 
   return app;
 }());
