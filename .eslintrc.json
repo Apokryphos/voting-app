@@ -1,8 +1,14 @@
 {
   "env": { "node": true },
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "plugins": ["flowtype"],
   "rules": {
     "no-plusplus": 0,
     "no-underscore-dangle": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 }
