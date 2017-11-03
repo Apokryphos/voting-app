@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App rendering Renders OK 1`] = `
-<h1>
-  react-template
-</h1>
+<div>
+  <h1>
+    Voting Polls
+  </h1>
+  <div />
+</div>
 `;

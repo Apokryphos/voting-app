@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Polls rendering Renders OK 1`] = `
+<div>
+  <div>
+    <h1>
+      What's your favorite hot dog?
+    </h1>
+    <ul>
+      <li>
+        Attman's Deli
+      </li>
+      <li>
+        Ball Park Franks
+      </li>
+      <li>
+        Dachshund
+      </li>
+      <li>
+        Esskay
+      </li>
+      <li>
+        Hebrew National
+      </li>
+      <li>
+        Nathan's Famous
+      </li>
+    </ul>
+  </div>
+</div>
+`;
