@@ -24,26 +24,27 @@ function testPoll(t, actual, expected) {
     throw new Error('Actual and expected should be two different objects.');
   }
 
-  t.equal(actual.name, expected.name);
+  t.equal(actual.createdBy, expected.createdBy);
   t.equal(actual.question, expected.question);
   t.equal(actual.choices.length, expected.choices.length);
   for (let c = 0; c < actual.choices.length; ++c) {
-    t.equal(actual.choices[c], expected.choices[c]);
+    t.equal(actual.choices[c].text, expected.choices[c].text);
+    t.equal(actual.choices[c].votes.length, 0);
   }
 }
 
 //  Helper function to creating a valid Poll data object
 function validPoll() {
   return {
-    name: 'Test Poll',
+    createdBy: 'Test User',
     question: "What's your favorite hot dog?",
     choices: [
-      "Attman's Deli",
-      'Ball Park Franks',
-      'Dachshund',
-      'Esskay',
-      'Hebrew National',
-      "Nathan's Famous",
+      { text: "Attman's Deli" },
+      { text: 'Ball Park Franks' },
+      { text: 'Dachshund' },
+      { text: 'Esskay' },
+      { text: 'Hebrew National' },
+      { text: "Nathan's Famous" },
     ],
   };
 }

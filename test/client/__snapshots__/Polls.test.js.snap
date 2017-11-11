@@ -6,6 +6,10 @@ exports[`Polls rendering Renders OK 1`] = `
     <h1>
       What's your favorite hot dog?
     </h1>
+    <h2>
+      by 
+      Test User
+    </h2>
     <ul>
       <li>
         Attman's Deli

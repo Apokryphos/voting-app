@@ -4,7 +4,13 @@ import Poll from '../Poll';
 
 function Polls(props) {
   const polls = props.polls.map(p => (
-    <Poll key={p._id} id={p._id} question={p.question} choices={p.choices} />
+    <Poll
+      key={p._id}
+      id={p._id}
+      createdBy={p.createdBy}
+      question={p.question}
+      choices={p.choices}
+    />
   ));
 
   return <div>{polls}</div>;

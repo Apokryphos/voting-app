@@ -3,17 +3,30 @@
 exports[`Poll rendering Renders OK 1`] = `
 <div>
   <h1>
-    Test Question
+    What's your favorite hot dog?
   </h1>
+  <h2>
+    by 
+    Test User
+  </h2>
   <ul>
     <li>
-      a
+      Attman's Deli
     </li>
     <li>
-      b
+      Ball Park Franks
     </li>
     <li>
-      c
+      Dachshund
+    </li>
+    <li>
+      Esskay
+    </li>
+    <li>
+      Hebrew National
+    </li>
+    <li>
+      Nathan's Famous
     </li>
   </ul>
 </div>

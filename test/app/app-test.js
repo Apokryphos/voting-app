@@ -140,10 +140,10 @@ DbUtil.testFixture('POST /api/poll', (t) => {
     });
 });
 
-DbUtil.testFixture('POST /api/poll with missing name param fails', t =>
+DbUtil.testFixture('POST /api/poll with missing createdBy param fails', t =>
   request
     .post('/api/poll')
-    .send({ question: 'Test', choices: ['a', 'b', 'c'] })
+    .send({ question: 'Test', choices: [{ text: 'a' }, { text: 'b' }, { text: 'c' }]})
     .set('Accept', 'application/json')
     .expect(400)
     .then(() => {
@@ -157,7 +157,7 @@ DbUtil.testFixture('POST /api/poll with missing name param fails', t =>
 DbUtil.testFixture('POST /api/poll with missing question param fails', t =>
   request
     .post('/api/poll')
-    .send({ name: 'Test', choices: ['a', 'b', 'c'] })
+    .send({ createdBy: 'Test', choices: [{ text: 'a' }, { text: 'b' }, { text: 'c' }]})
     .set('Accept', 'application/json')
     .expect(400)
     .then(() => t.end())
@@ -169,7 +169,7 @@ DbUtil.testFixture('POST /api/poll with missing question param fails', t =>
 DbUtil.testFixture('POST /api/poll with missing choices param fails', t =>
   request
     .post('/api/poll')
-    .send({ name: 'Test', question: 'Test' })
+    .send({ createdBy: 'Test', question: 'Test' })
     .set('Accept', 'application/json')
     .expect(400)
     .then(() => t.end())
@@ -181,7 +181,7 @@ DbUtil.testFixture('POST /api/poll with missing choices param fails', t =>
 DbUtil.testFixture('POST /api/poll with empty choices param fails', t =>
   request
     .post('/api/poll')
-    .send({ name: 'Test', question: 'Test', choices: [] })
+    .send({ createdBy: 'Test', question: 'Test', choices: [] })
     .set('Accept', 'application/json')
     .expect(400)
     .then(() => t.end())

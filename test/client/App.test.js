@@ -2,7 +2,6 @@ import App from 'App';
 import React from 'react';
 import ReactTestRenderer from 'react-test-renderer';
 import mockFetch from './mock-fetch';
-import PollData from '../data/poll-data.js';
 
 //  TODO:
 //  Fetch is called by App component and will show a network
@@ -12,9 +11,13 @@ beforeEach(() => {
   jest.spyOn(window, 'fetch').mockImplementation(mockFetch([
     {
       _id: '59fa8d7305b9e712dea4e648',
-      name: 'test name',
+      createdBy: 'test user',
       question: 'test question',
-      choices: ['a', 'b', 'c'],
+      choices: [
+        { text: 'a', votes: ['59fa8d7305b9e712dea4e648'] },
+        { text: 'b', votes: [] },
+        { text: 'c', votes: [] },
+      ],
     },
   ]));
 });

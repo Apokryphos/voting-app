@@ -64,7 +64,7 @@ test('POST /api/poll fails when database is offline', (t) => {
     });
 });
 
-test('POST /api/poll with missing name param fails when database is offline', (t) => {
+test('POST /api/poll with missing createdBy param fails when database is offline', (t) => {
   request
     .post('/api/poll')
     .send({ question: 'Test', choices: ['a', 'b', 'c'] })
@@ -79,7 +79,7 @@ test('POST /api/poll with missing name param fails when database is offline', (t
 test('POST /api/poll with missing question param fails when database is offline', (t) => {
   request
     .post('/api/poll')
-    .send({ name: 'Test', choices: ['a', 'b', 'c'] })
+    .send({ createdBy: 'Test', choices: ['a', 'b', 'c'] })
     .set('Accept', 'application/json')
     .expect(503)
     .then(() => t.end())
@@ -92,7 +92,7 @@ test('POST /api/poll with missing question param fails when database is offline'
 test('POST /api/poll with missing choices param fails when database is offline', (t) => {
   request
     .post('/api/poll')
-    .send({ name: 'Test', question: 'Test' })
+    .send({ createdBy: 'Test', question: 'Test' })
     .set('Accept', 'application/json')
     .expect(503)
     .then(() => t.end())
